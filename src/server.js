@@ -66,13 +66,15 @@ app.use(notFound);
 app.use(errorHandler);
 
 // Start Server
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on http://localhost:${PORT}`);
-  console.log(`📂 API Docs: http://localhost:${PORT}/`);
-  console.log(`📦 Products API: http://localhost:${PORT}/api/products`);
-  console.log(`🛒 Cart API: http://localhost:${PORT}/api/cart`);
-  console.log(`📋 Orders API: http://localhost:${PORT}/api/orders`);
-  console.log(`✅ Anonymous checkout flow active - no registration required`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server is running on http://localhost:${PORT}`);
+    console.log(`📂 API Docs: http://localhost:${PORT}/`);
+    console.log(`📦 Products API: http://localhost:${PORT}/api/products`);
+    console.log(`🛒 Cart API: http://localhost:${PORT}/api/cart`);
+    console.log(`📋 Orders API: http://localhost:${PORT}/api/orders`);
+    console.log(`✅ Anonymous checkout flow active - no registration required`);
+  });
+}
 
 module.exports = app;
