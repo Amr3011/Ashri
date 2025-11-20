@@ -3,6 +3,7 @@
 ## 🚀 Deploy to Vercel
 
 ### Prerequisites
+
 1. GitHub account ✅
 2. Vercel account (sign up at vercel.com)
 3. MongoDB Atlas database ✅
@@ -10,6 +11,7 @@
 ### Important Notes for Vercel
 
 ⚠️ **Vercel Limitations:**
+
 1. **Read-only filesystem** - File uploads won't persist
 2. **Serverless functions** - Each request is a separate execution
 3. **Cold starts** - First request may be slower
@@ -17,6 +19,7 @@
 ### Step-by-Step Deployment
 
 #### 1. Push to GitHub ✅
+
 ```bash
 git add .
 git commit -m "Ready for Vercel deployment"
@@ -46,6 +49,7 @@ NODE_ENV=production
 ```
 
 **How to add:**
+
 1. In Vercel dashboard → Your Project → Settings
 2. Click "Environment Variables"
 3. Add each variable:
@@ -91,6 +95,7 @@ curl https://YOUR_VERCEL_URL/api/products
 ### Error: FUNCTION_INVOCATION_FAILED
 
 **Fixed Issues:**
+
 - ✅ Removed file system operations in production
 - ✅ Added MongoDB connection timeout
 - ✅ Proper serverless function structure
@@ -99,6 +104,7 @@ curl https://YOUR_VERCEL_URL/api/products
 ### Error: MongoDB Connection Timeout
 
 **Solution:**
+
 1. Check MongoDB Atlas → Network Access
 2. Add `0.0.0.0/0` to IP whitelist
 3. Verify `MONGODB_URI` in Vercel environment variables
@@ -107,6 +113,7 @@ curl https://YOUR_VERCEL_URL/api/products
 ### Error: Cannot read property 'xyz' of undefined
 
 **Solution:**
+
 - Check Vercel Function Logs
 - Look for specific error in logs
 - Verify all environment variables are set
@@ -129,16 +136,19 @@ curl https://YOUR_VERCEL_URL/api/products
 **Solutions:**
 
 ### Option 1: Cloudinary (Recommended)
+
 ```bash
 npm install cloudinary multer-storage-cloudinary
 ```
 
 ### Option 2: AWS S3
+
 ```bash
 npm install @aws-sdk/client-s3 multer-s3
 ```
 
 ### Option 3: Vercel Blob Storage
+
 ```bash
 npm install @vercel/blob
 ```
@@ -163,12 +173,14 @@ git push origin main
 ## 📊 Monitoring
 
 **Check Performance:**
+
 1. Vercel Dashboard → Your Project
 2. View "Analytics" tab
 3. Monitor function execution time
 4. Check error rates
 
 **View Logs:**
+
 1. Deployments → Latest deployment
 2. Functions → View Function Logs
 3. Filter by errors or time range
@@ -209,12 +221,14 @@ git push origin main
 ## 🎯 Quick Summary of Fixes
 
 **What was wrong:**
+
 1. ❌ File system operations (`fs.mkdirSync`) - crashed on Vercel
 2. ❌ Wrong serverless structure - needed `api/index.js`
 3. ❌ Database connection without timeout
 4. ❌ `process.exit()` in production - kills serverless function
 
 **What we fixed:**
+
 1. ✅ Disabled file operations in production
 2. ✅ Created proper serverless entry point (`api/index.js`)
 3. ✅ Added connection timeout and error handling
@@ -225,6 +239,7 @@ git push origin main
 **🎉 Your API should work now!**
 
 **Next Steps:**
+
 1. ✅ Code is already pushed to GitHub
 2. Go to Vercel Dashboard
 3. **Redeploy** your project (it will auto-deploy from GitHub)
