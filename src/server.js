@@ -4,7 +4,11 @@ const path = require("path");
 const fs = require("fs");
 const connectDB = require("./config/database");
 const { errorHandler, notFound } = require("./middleware/errorHandler");
-require("dotenv").config();
+
+// Only load .env in development (Vercel uses environment variables)
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
