@@ -12,7 +12,7 @@ const FeaturedProducts = () => {
 
   const itemsPerPage = 8;
 
-  const categories = ["All Products", "Hoodie", "Pants", "Suit"];
+  const categories = ["All Products", "Hoodie", "Pants", "Suit", "Crewneck"];
 
   useEffect(() => {
     const fetchProducts = async () => {
