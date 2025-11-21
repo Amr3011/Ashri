@@ -13,30 +13,23 @@ exports.createProduct = async (req, res) => {
     console.log("Variants type:", typeof variants);
     console.log("Variants value:", variants);
 
-    // Get uploaded images paths or use placeholder in production
+    // Get uploaded images paths or use imageUrls
     let images = [];
-    if (process.env.NODE_ENV === "production") {
-      // In production (Vercel), use external image URLs
-      // Users should provide image URLs in the request
-      images = req.body.imageUrls || [];
-      if (images.length === 0) {
-        return res.status(400).json({
-          success: false,
-          message:
-            "Image URLs are required in production. Please provide 'imageUrls' array with external image links (e.g., from Cloudinary, ImgBB, etc.)",
-        });
-      }
-    } else {
-      // In development, use uploaded files
-      images = req.files
-        ? req.files.map((file) => `/uploads/${file.filename}`)
-        : [];
-      if (images.length === 0) {
-        return res.status(400).json({
-          success: false,
-          message: "At least one image is required",
-        });
-      }
+    
+    // Check for imageUrls first (works in both dev and production)
+    if (req.body.imageUrls && req.body.imageUrls.length > 0) {
+      images = req.body.imageUrls;
+    } 
+    // Fallback to uploaded files in development
+    else if (req.files && req.files.length > 0) {
+      images = req.files.map((file) => `/uploads/${file.filename}`);
+    }
+    
+    if (images.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "At least one image is required. Provide 'imageUrls' array with image links.",
+      });
     }
 
     // Parse variants if it comes as string
