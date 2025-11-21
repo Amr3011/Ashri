@@ -1,5 +1,12 @@
 import Model from "../../../public/assets/Model.jpg";
 const Hero = () => {
+  const scrollToProducts = () => {
+    const productsSection = document.getElementById("products");
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,10 +24,16 @@ const Hero = () => {
               your unique style.
             </p>
             <div className="flex gap-4 pt-4">
-              <button className="bg-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors">
+              <button
+                onClick={scrollToProducts}
+                className="bg-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors"
+              >
                 Shop Now
               </button>
-              <button className="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg font-medium hover:bg-purple-50 transition-colors">
+              <button
+                onClick={scrollToProducts}
+                className="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg font-medium hover:bg-purple-50 transition-colors"
+              >
                 View Collection
               </button>
             </div>
