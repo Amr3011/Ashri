@@ -67,6 +67,7 @@ const productSchema = new mongoose.Schema(
           "Jeans",
           "Shorts",
           "Jacket",
+          "Suit",
           "Other",
         ],
         message: "{VALUE} is not a valid category",
