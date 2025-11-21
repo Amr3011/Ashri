@@ -38,9 +38,7 @@ if (process.env.NODE_ENV === "production") {
     if (mimetype && extname) {
       return cb(null, true);
     } else {
-      cb(
-        new Error("Only image files are allowed (jpeg, jpg, png, gif, webp)")
-      );
+      cb(new Error("Only image files are allowed (jpeg, jpg, png, gif, webp)"));
     }
   };
 
