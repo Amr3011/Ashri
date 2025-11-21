@@ -1,19 +1,22 @@
 const multer = require("multer");
 const path = require("path");
 
-// In production (Vercel), disable file uploads
+// In production (Vercel), create a dummy middleware that skips file upload
 if (process.env.NODE_ENV === "production") {
-  // Create a mock upload middleware that prevents file uploads
-  const noUpload = multer({
-    storage: multer.memoryStorage(),
-    limits: { fileSize: 0 },
-  });
-
+  // Export a dummy middleware that just passes through
   module.exports = {
-    array: () => (req, res, next) => {
-      // Skip file upload in production
-      req.files = [];
-      next();
+    array: (fieldName, maxCount) => {
+      return (req, res, next) => {
+        // Set empty files array and continue
+        req.files = [];
+        next();
+      };
+    },
+    single: (fieldName) => {
+      return (req, res, next) => {
+        req.file = null;
+        next();
+      };
     },
   };
 } else {

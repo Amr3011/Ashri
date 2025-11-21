@@ -26,7 +26,12 @@ if (process.env.NODE_ENV === "production") {
   router.put("/:id", validateObjectId, updateProduct);
 } else {
   router.post("/", upload.array("images", 10), validateProduct, createProduct);
-  router.put("/:id", validateObjectId, upload.array("images", 10), updateProduct);
+  router.put(
+    "/:id",
+    validateObjectId,
+    upload.array("images", 10),
+    updateProduct
+  );
 }
 
 router.delete("/:id", validateObjectId, deleteProduct);
