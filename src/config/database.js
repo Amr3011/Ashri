@@ -9,13 +9,18 @@ const connectDB = async () => {
       return;
     }
 
-    await mongoose.connect(process.env.MONGODB_URI, {
-      serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
-    });
+    const options = {
+      serverSelectionTimeoutMS: 30000, // Increase timeout to 30s
+      socketTimeoutMS: 45000,
+      family: 4, // Use IPv4, skip trying IPv6
+    };
+
+    await mongoose.connect(process.env.MONGODB_URI, options);
     console.log("✅ MongoDB Connected Successfully!");
     console.log("📦 Database:", mongoose.connection.name);
   } catch (error) {
     console.error("❌ MongoDB Connection Error:", error.message);
+    console.error("Full error:", error);
     if (process.env.NODE_ENV !== "production") {
       process.exit(1);
     }
