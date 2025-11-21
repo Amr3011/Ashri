@@ -15,20 +15,21 @@ exports.createProduct = async (req, res) => {
 
     // Get uploaded images paths or use imageUrls
     let images = [];
-    
+
     // Check for imageUrls first (works in both dev and production)
     if (req.body.imageUrls && req.body.imageUrls.length > 0) {
       images = req.body.imageUrls;
-    } 
+    }
     // Fallback to uploaded files in development
     else if (req.files && req.files.length > 0) {
       images = req.files.map((file) => `/uploads/${file.filename}`);
     }
-    
+
     if (images.length === 0) {
       return res.status(400).json({
         success: false,
-        message: "At least one image is required. Provide 'imageUrls' array with image links.",
+        message:
+          "At least one image is required. Provide 'imageUrls' array with image links.",
       });
     }
 
