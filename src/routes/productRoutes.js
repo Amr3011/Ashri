@@ -20,8 +20,15 @@ router.get("/", getAllProducts);
 router.get("/:id", validateObjectId, getProductById);
 
 // Admin routes (لاحقاً هنضيف Authentication)
-router.post("/", upload.array("images", 10), validateProduct, createProduct);
-router.put("/:id", validateObjectId, upload.array("images", 10), updateProduct);
+// In production, skip multer middleware
+if (process.env.NODE_ENV === "production") {
+  router.post("/", validateProduct, createProduct);
+  router.put("/:id", validateObjectId, updateProduct);
+} else {
+  router.post("/", upload.array("images", 10), validateProduct, createProduct);
+  router.put("/:id", validateObjectId, upload.array("images", 10), updateProduct);
+}
+
 router.delete("/:id", validateObjectId, deleteProduct);
 router.patch(
   "/:id/stock",
