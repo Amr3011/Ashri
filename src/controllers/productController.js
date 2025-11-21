@@ -120,7 +120,7 @@ exports.createProduct = async (req, res) => {
 // @access  Public
 exports.getAllProducts = async (req, res) => {
   try {
-    const { category, isActive, search, page = 1, limit = 10 } = req.query;
+    const { category, isActive, search, page = 1, limit = 8 } = req.query;
 
     // Build query
     const query = {};
