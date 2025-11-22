@@ -36,7 +36,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                01151860255
+                01152278278
               </a>
             </div>
 
@@ -55,12 +55,6 @@ const Footer = () => {
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
-              <a
-                href="mailto:hassanellsayed6@gamil.com"
-                className="text-gray-700 hover:text-purple-600 transition-colors font-medium"
-              >
-                hassanellsayed6@gamil.com
-              </a>
             </div>
           </div>
 
