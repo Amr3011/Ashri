@@ -22,6 +22,7 @@ interface ProductDetail {
   name: string;
   description: string;
   price: number;
+  oldPrice?: number;
   images: string[];
   category: string;
   variants: Variant[];
@@ -152,12 +153,22 @@ const ProductDetails = () => {
             {/* Images Section */}
             <div className="space-y-4">
               {/* Main Image */}
-              <div className="aspect-square bg-gray-100 rounded-2xl overflow-hidden">
+              <div className="aspect-square bg-gray-100 rounded-2xl overflow-hidden relative">
                 <img
                   src={product.images[selectedImage]}
                   alt={product.name}
                   className="w-full h-full object-contain"
                 />
+                {product.oldPrice && product.oldPrice > product.price && (
+                  <div className="absolute top-4 right-4 bg-purple-600 text-white px-5 py-3 rounded-full text-xl font-bold shadow-lg">
+                    -
+                    {Math.round(
+                      ((product.oldPrice - product.price) / product.oldPrice) *
+                        100
+                    )}
+                    %
+                  </div>
+                )}
               </div>
 
               {/* Thumbnail Images */}
@@ -192,6 +203,11 @@ const ProductDetails = () => {
                 <span className="text-3xl font-bold text-gray-900">
                   LE {product.price.toFixed(2)} EGP
                 </span>
+                {product.oldPrice && product.oldPrice > product.price && (
+                  <span className="text-2xl text-gray-500 line-through">
+                    LE {product.oldPrice.toFixed(2)} EGP
+                  </span>
+                )}
               </div>
 
               {/* Color Selection */}
