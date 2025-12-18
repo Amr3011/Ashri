@@ -92,6 +92,7 @@ const CheckoutPage = () => {
         city: formData.city,
         state: formData.governorate,
         orderNotes: formData.orderNotes || "",
+        shippingFee: 85,
       };
 
       console.log("Sending order data:", orderData);
@@ -346,9 +347,21 @@ const CheckoutPage = () => {
                     </div>
                   ))}
 
+                  <div className="flex justify-between text-gray-700 py-3 border-t">
+                    <span>Subtotal</span>
+                    <span className="font-semibold">
+                      {cart.totalPrice.toFixed(2)} EGP
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between text-gray-700 py-3">
+                    <span>Shipping</span>
+                    <span className="font-semibold">85.00 EGP</span>
+                  </div>
+
                   <div className="flex justify-between text-xl font-bold text-gray-900 py-4 border-t pt-4">
                     <span>Total</span>
-                    <span>{cart.totalPrice.toFixed(2)} EGP</span>
+                    <span>{(cart.totalPrice + 85).toFixed(2)} EGP</span>
                   </div>
                 </div>
               </div>
