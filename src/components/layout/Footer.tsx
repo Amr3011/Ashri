@@ -15,15 +15,7 @@ const Footer = () => {
             />
           </div>
 
-          {/* Contact Info Section */}
-          <div className="text-center space-y-4">
-            <h3 className="text-xl font-bold mb-4 text-purple-600">
-              Contact Us{" "}
-            </h3>
-
-           
           
-          </div>
 
           {/* Social Media or Additional Info */}
           <div className="text-center md:text-right">
