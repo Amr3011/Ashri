@@ -84,11 +84,11 @@ const ProductDetails = () => {
   }
 
   const currentVariant = product.variants.find(
-    (v) => v.color === selectedColor
+    (v) => v.color === selectedColor,
   );
 
   const selectedSizeData = currentVariant?.sizes.find(
-    (s) => s.name === selectedSize
+    (s) => s.name === selectedSize,
   );
 
   const maxQuantity = selectedSizeData?.quantity || 0;
@@ -164,7 +164,7 @@ const ProductDetails = () => {
                     -
                     {Math.round(
                       ((product.oldPrice - product.price) / product.oldPrice) *
-                        100
+                        100,
                     )}
                     %
                   </div>
@@ -253,8 +253,8 @@ const ProductDetails = () => {
                         selectedSize === size.name
                           ? "bg-white text-purple-600 border-purple-600"
                           : size.available
-                          ? "bg-white text-gray-700 border-gray-300 hover:border-purple-600"
-                          : "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed line-through"
+                            ? "bg-white text-gray-700 border-gray-300 hover:border-purple-600"
+                            : "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed line-through"
                       }`}
                     >
                       {size.name}
@@ -288,9 +288,9 @@ const ProductDetails = () => {
                       +
                     </button>
                   </div>
-                  {selectedSize && (
-                    <span className="text-sm text-gray-600">
-                      Available: {maxQuantity}
+                  {selectedSize && maxQuantity === 0 && (
+                    <span className="text-sm text-red-600 font-semibold">
+                      Out of Stock
                     </span>
                   )}
                 </div>
