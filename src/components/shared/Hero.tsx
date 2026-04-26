@@ -1,4 +1,4 @@
-import Model from "../../../public/assets/Model.jpg";
+import Model from "../../../public/assets/Model.jpeg";
 const Hero = () => {
   const scrollToProducts = () => {
     const productsSection = document.getElementById("products");
