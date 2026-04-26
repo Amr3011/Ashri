@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(
+    circle at top right,
+    #1e293b 0%,
+    #020617 45%,
+    #020617 100%
+  );
+  color: #e2e8f0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
 @keyframes slide-in {
   from {
     transform: translateX(100%);

@@ -36,21 +36,21 @@ const FeaturedProducts = () => {
   const filteredProducts = products;
 
   return (
-    <section id="products" className="bg-gray-50 py-20">
+    <section id="products" className="bg-slate-900 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
             Featured Products
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             Explore our handpicked selection of trending fashion pieces
           </p>
         </div>
 
         {/* Collection Label */}
         <div className="flex justify-center mb-12">
-          <span className="px-16 py-3 rounded-full font-medium bg-purple-600 text-white shadow-lg">
+          <span className="px-16 py-3 rounded-full font-medium bg-amber-500 text-slate-950 shadow-lg shadow-amber-900/30">
             Summer Collection
           </span>
         </div>
@@ -58,7 +58,7 @@ const FeaturedProducts = () => {
         {/* Products Grid */}
         {loading ? (
           <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-600"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-amber-500"></div>
           </div>
         ) : (
           <>

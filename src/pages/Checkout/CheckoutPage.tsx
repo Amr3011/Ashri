@@ -58,7 +58,7 @@ const CheckoutPage = () => {
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value, type } = e.target;
     if (type === "checkbox") {
@@ -138,22 +138,22 @@ const CheckoutPage = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-amber-500"></div>
       </div>
     );
   }
 
   if (!cart || cart.items.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 py-12">
+      <div className="min-h-screen bg-slate-900 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center py-20">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-slate-100 mb-4">
               Your cart is empty
             </h2>
             <button
               onClick={() => navigate("/")}
-              className="inline-block bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+              className="inline-block bg-amber-500 text-slate-950 px-8 py-3 rounded-lg font-semibold hover:bg-amber-400 transition-colors"
             >
               Continue Shopping
             </button>
@@ -164,20 +164,20 @@ const CheckoutPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-slate-900 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Billing Details */}
-            <div className="bg-white rounded-xl shadow-sm p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="bg-slate-800 border border-slate-700 rounded-xl shadow-lg shadow-black/20 p-8">
+              <h2 className="text-2xl font-bold text-slate-100 mb-6">
                 Billing details
               </h2>
 
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-slate-300 mb-1">
                       First name <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -186,11 +186,11 @@ const CheckoutPage = () => {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-slate-300 mb-1">
                       Last name <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -199,13 +199,13 @@ const CheckoutPage = () => {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-300 mb-1">
                     Street address <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -215,12 +215,12 @@ const CheckoutPage = () => {
                     onChange={handleInputChange}
                     placeholder="House number and street name"
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent mb-2"
+                    className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent mb-2"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-300 mb-1">
                     Town / City <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -229,12 +229,12 @@ const CheckoutPage = () => {
                     value={formData.city}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-300 mb-1">
                     State / County <span className="text-red-500">*</span>
                   </label>
                   <select
@@ -242,7 +242,7 @@ const CheckoutPage = () => {
                     value={formData.governorate}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   >
                     <option value="Cairo">Cairo</option>
                     <option value="Giza">Giza</option>
@@ -276,7 +276,7 @@ const CheckoutPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-300 mb-1">
                     Phone <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -285,12 +285,12 @@ const CheckoutPage = () => {
                     value={formData.phone}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-300 mb-1">
                     Email address <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -299,12 +299,12 @@ const CheckoutPage = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-300 mb-1">
                     Order notes (optional)
                   </label>
                   <textarea
@@ -313,7 +313,7 @@ const CheckoutPage = () => {
                     onChange={handleInputChange}
                     rows={4}
                     placeholder="Notes about your order, e.g. special notes for delivery."
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -321,13 +321,13 @@ const CheckoutPage = () => {
 
             {/* Your Order */}
             <div>
-              <div className="bg-white rounded-xl shadow-sm p-8 mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <div className="bg-slate-800 border border-slate-700 rounded-xl shadow-lg shadow-black/20 p-8 mb-6">
+                <h2 className="text-2xl font-bold text-slate-100 mb-6">
                   Your order
                 </h2>
 
                 <div className="space-y-4">
-                  <div className="flex justify-between font-semibold text-gray-900 pb-4 border-b">
+                  <div className="flex justify-between font-semibold text-slate-100 pb-4 border-b border-slate-700">
                     <span>Product</span>
                     <span>Subtotal</span>
                   </div>
@@ -335,7 +335,7 @@ const CheckoutPage = () => {
                   {cart.items.map((item) => (
                     <div
                       key={item._id}
-                      className="flex justify-between text-gray-700 py-2 border-b border-gray-100"
+                      className="flex justify-between text-slate-300 py-2 border-b border-slate-700"
                     >
                       <span>
                         {item.product.name} - {item.color} - {item.size} ×{" "}
@@ -347,19 +347,19 @@ const CheckoutPage = () => {
                     </div>
                   ))}
 
-                  <div className="flex justify-between text-gray-700 py-3 border-t">
+                  <div className="flex justify-between text-slate-300 py-3 border-t border-slate-700">
                     <span>Subtotal</span>
                     <span className="font-semibold">
                       {cart.totalPrice.toFixed(2)} EGP
                     </span>
                   </div>
 
-                  <div className="flex justify-between text-gray-700 py-3">
+                  <div className="flex justify-between text-slate-300 py-3">
                     <span>Shipping</span>
                     <span className="font-semibold">85.00 EGP</span>
                   </div>
 
-                  <div className="flex justify-between text-xl font-bold text-gray-900 py-4 border-t pt-4">
+                  <div className="flex justify-between text-xl font-bold text-slate-100 py-4 border-t border-slate-700 pt-4">
                     <span>Total</span>
                     <span>{(cart.totalPrice + 85).toFixed(2)} EGP</span>
                   </div>
@@ -367,9 +367,9 @@ const CheckoutPage = () => {
               </div>
 
               {/* Payment Method */}
-              <div className="bg-white rounded-xl shadow-sm p-8">
+              <div className="bg-slate-800 border border-slate-700 rounded-xl shadow-lg shadow-black/20 p-8">
                 <div className="space-y-4">
-                  <div className="border border-gray-300 rounded-lg p-4">
+                  <div className="border border-slate-600 rounded-lg p-4 bg-slate-900/60">
                     <div className="flex items-center">
                       <input
                         type="radio"
@@ -377,18 +377,18 @@ const CheckoutPage = () => {
                         value="cash"
                         checked={formData.paymentMethod === "cash"}
                         onChange={handleInputChange}
-                        className="w-4 h-4 text-purple-600"
+                        className="w-4 h-4 text-amber-500"
                       />
-                      <label className="ml-3 text-gray-900 font-medium">
+                      <label className="ml-3 text-slate-100 font-medium">
                         Cash on delivery
                       </label>
                     </div>
-                    <p className="mt-2 text-sm text-gray-600 ml-7">
+                    <p className="mt-2 text-sm text-slate-300 ml-7">
                       Pay with cash upon delivery.
                     </p>
                   </div>
 
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-slate-400">
                     Your personal data will be used to process your order,
                     support your experience throughout this website, and for
                     other purposes described in our privacy policy.
@@ -397,7 +397,7 @@ const CheckoutPage = () => {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full bg-red-600 text-white py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-amber-500 text-slate-950 py-4 rounded-lg text-lg font-semibold hover:bg-amber-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {submitting ? "Placing Order..." : "Place order"}
                   </button>

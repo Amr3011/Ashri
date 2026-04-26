@@ -36,7 +36,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-slate-950/95 border-b border-slate-800 shadow-lg shadow-black/20 backdrop-blur">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-28">
           {/* Logo */}
@@ -54,7 +54,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
-              className="text-purple-400 font-medium border-b-2 border-purple-400 pb-1 hover:text-purple-500 transition-colors"
+              className="text-amber-400 font-medium border-b-2 border-amber-400 pb-1 hover:text-amber-300 transition-colors"
             >
               Home
             </Link>
@@ -66,7 +66,7 @@ const Navbar = () => {
                   .getElementById("products")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="text-gray-700 font-medium hover:text-purple-400 transition-colors cursor-pointer"
+              className="text-slate-300 font-medium hover:text-amber-300 transition-colors cursor-pointer"
             >
               Products
             </a>
@@ -78,7 +78,7 @@ const Navbar = () => {
                   .getElementById("contact")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="text-gray-700 font-medium hover:text-purple-400 transition-colors cursor-pointer"
+              className="text-slate-300 font-medium hover:text-amber-300 transition-colors cursor-pointer"
             >
               Contact Us
             </a>
@@ -88,11 +88,11 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <Link
               to="/cart"
-              className="text-gray-700 hover:text-purple-400 transition-colors relative"
+              className="text-slate-300 hover:text-amber-300 transition-colors relative"
             >
               <FiShoppingBag className="w-6 h-6" />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-purple-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-amber-500 text-slate-950 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                   {cartCount}
                 </span>
               )}

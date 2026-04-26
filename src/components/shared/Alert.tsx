@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { FiCheckCircle, FiX } from "react-icons/fi";
+import { FiAlertCircle, FiCheckCircle, FiX } from "react-icons/fi";
 
 interface AlertProps {
   message: string;
@@ -25,17 +25,21 @@ const Alert = ({
   return (
     <div className="fixed top-4 right-4 z-50 animate-slide-in">
       <div
-        className={`flex items-center gap-3 px-6 py-4 rounded-lg shadow-lg ${
+        className={`flex items-center gap-3 px-6 py-4 rounded-lg shadow-lg border backdrop-blur ${
           type === "success"
-            ? "bg-green-500 text-white"
-            : "bg-red-500 text-white"
+            ? "bg-slate-900/95 text-slate-100 border-emerald-500/60"
+            : "bg-slate-900/95 text-slate-100 border-rose-500/60"
         }`}
       >
-        <FiCheckCircle className="w-6 h-6 flex-shrink-0" />
+        {type === "success" ? (
+          <FiCheckCircle className="w-6 h-6 flex-shrink-0 text-emerald-400" />
+        ) : (
+          <FiAlertCircle className="w-6 h-6 flex-shrink-0 text-rose-400" />
+        )}
         <p className="font-medium">{message}</p>
         <button
           onClick={onClose}
-          className="ml-4 hover:opacity-80 transition-opacity"
+          className="ml-4 hover:text-amber-300 transition-colors"
         >
           <FiX className="w-5 h-5" />
         </button>

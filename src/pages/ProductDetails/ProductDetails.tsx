@@ -70,7 +70,7 @@ const ProductDetails = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-amber-500"></div>
       </div>
     );
   }
@@ -78,7 +78,7 @@ const ProductDetails = () => {
   if (!product) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <p className="text-xl text-gray-600">Product not found</p>
+        <p className="text-xl text-slate-300">Product not found</p>
       </div>
     );
   }
@@ -147,20 +147,20 @@ const ProductDetails = () => {
           onClose={() => setShowAlert(false)}
         />
       )}
-      <div className="bg-white min-h-screen py-12">
+      <div className="bg-slate-900 min-h-screen py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Images Section */}
             <div className="space-y-4">
               {/* Main Image */}
-              <div className="aspect-square bg-gray-100 rounded-2xl overflow-hidden relative">
+              <div className="aspect-square bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden relative">
                 <img
                   src={product.images[selectedImage]}
                   alt={product.name}
                   className="w-full h-full object-contain"
                 />
                 {product.oldPrice && product.oldPrice > product.price && (
-                  <div className="absolute top-4 right-4 bg-purple-600 text-white px-5 py-3 rounded-full text-xl font-bold shadow-lg">
+                  <div className="absolute top-4 right-4 bg-amber-500 text-slate-950 px-5 py-3 rounded-full text-xl font-bold shadow-lg shadow-amber-900/30">
                     -
                     {Math.round(
                       ((product.oldPrice - product.price) / product.oldPrice) *
@@ -177,10 +177,10 @@ const ProductDetails = () => {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`aspect-square bg-gray-100 rounded-lg overflow-hidden border-2 transition-all ${
+                    className={`aspect-square bg-slate-800 rounded-lg overflow-hidden border-2 transition-all ${
                       selectedImage === index
-                        ? "border-purple-600"
-                        : "border-transparent hover:border-gray-300"
+                        ? "border-amber-500"
+                        : "border-transparent hover:border-slate-600"
                     }`}
                   >
                     <img
@@ -195,16 +195,16 @@ const ProductDetails = () => {
 
             {/* Product Info Section */}
             <div className="space-y-6">
-              <h1 className="text-4xl font-bold text-gray-900">
+              <h1 className="text-4xl font-bold text-slate-100">
                 {product.name}
               </h1>
 
               <div className="flex items-center gap-4">
-                <span className="text-3xl font-bold text-gray-900">
+                <span className="text-3xl font-bold text-slate-100">
                   LE {product.price.toFixed(2)} EGP
                 </span>
                 {product.oldPrice && product.oldPrice > product.price && (
-                  <span className="text-2xl text-gray-500 line-through">
+                  <span className="text-2xl text-slate-400 line-through">
                     LE {product.oldPrice.toFixed(2)} EGP
                   </span>
                 )}
@@ -212,7 +212,7 @@ const ProductDetails = () => {
 
               {/* Color Selection */}
               <div className="space-y-3">
-                <label className="text-lg font-semibold text-gray-900">
+                <label className="text-lg font-semibold text-slate-100">
                   Color
                 </label>
                 <div className="flex gap-3">
@@ -225,8 +225,8 @@ const ProductDetails = () => {
                       }}
                       className={`px-6 py-2 rounded-lg font-medium transition-all ${
                         selectedColor === variant.color
-                          ? "bg-purple-600 text-white"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                          ? "bg-amber-500 text-slate-950"
+                          : "bg-slate-800 text-slate-200 hover:bg-slate-700"
                       }`}
                     >
                       {variant.color}
@@ -237,7 +237,7 @@ const ProductDetails = () => {
 
               {/* Size Selection */}
               <div className="space-y-3">
-                <label className="text-lg font-semibold text-gray-900">
+                <label className="text-lg font-semibold text-slate-100">
                   Size
                 </label>
                 <div className="flex gap-3 flex-wrap">
@@ -251,10 +251,10 @@ const ProductDetails = () => {
                       disabled={!size.available}
                       className={`px-6 py-3 rounded-lg font-medium transition-all border-2 ${
                         selectedSize === size.name
-                          ? "bg-white text-purple-600 border-purple-600"
+                          ? "bg-slate-900 text-amber-400 border-amber-500"
                           : size.available
-                            ? "bg-white text-gray-700 border-gray-300 hover:border-purple-600"
-                            : "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed line-through"
+                            ? "bg-slate-800 text-slate-200 border-slate-600 hover:border-amber-500"
+                            : "bg-slate-900 text-slate-500 border-slate-700 cursor-not-allowed line-through"
                       }`}
                     >
                       {size.name}
@@ -265,25 +265,25 @@ const ProductDetails = () => {
 
               {/* Quantity Selector */}
               <div className="space-y-3">
-                <label className="text-lg font-semibold text-gray-900">
+                <label className="text-lg font-semibold text-slate-100">
                   Quantity
                 </label>
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center border-2 border-gray-300 rounded-lg">
+                  <div className="flex items-center border-2 border-slate-600 rounded-lg bg-slate-900/60">
                     <button
                       onClick={() => handleQuantityChange("decrement")}
                       disabled={!selectedSize || quantity <= 1}
-                      className="px-6 py-3 text-xl font-semibold hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="px-6 py-3 text-xl font-semibold text-slate-200 hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       −
                     </button>
-                    <span className="px-8 py-3 text-xl font-semibold border-x-2 border-gray-300">
+                    <span className="px-8 py-3 text-xl font-semibold text-slate-100 border-x-2 border-slate-600">
                       {quantity}
                     </span>
                     <button
                       onClick={() => handleQuantityChange("increment")}
                       disabled={!selectedSize || quantity >= maxQuantity}
-                      className="px-6 py-3 text-xl font-semibold hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="px-6 py-3 text-xl font-semibold text-slate-200 hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       +
                     </button>
@@ -300,18 +300,18 @@ const ProductDetails = () => {
               <button
                 onClick={handleAddToCart}
                 disabled={!selectedSize || addingToCart}
-                className="w-full bg-purple-600 text-white py-4 rounded-full text-lg font-semibold hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-amber-500 text-slate-950 py-4 rounded-full text-lg font-semibold hover:bg-amber-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {addingToCart ? "ADDING..." : "ADD TO CART"}
               </button>
 
               {/* Product Description */}
-              <div className="space-y-4 pt-6 border-t border-gray-200">
-                <h2 className="text-2xl font-bold text-gray-900">
+              <div className="space-y-4 pt-6 border-t border-slate-700">
+                <h2 className="text-2xl font-bold text-slate-100">
                   {product.category}
                 </h2>
                 <div className="space-y-2">
-                  <p className="text-gray-700">{product.description}</p>
+                  <p className="text-slate-300">{product.description}</p>
                 </div>
               </div>
             </div>
