@@ -12,7 +12,14 @@ const FeaturedProducts = () => {
 
   const itemsPerPage = 8;
 
-  const categories = ["All Products", "Hoodie", "Pants", "Suit", "Crewneck"];
+  const categories = [
+    "All Products",
+    "Hoodie",
+    "Pants",
+    "Suit",
+    "Crewneck",
+    "T-Shirt",
+  ];
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,7 +30,7 @@ const FeaturedProducts = () => {
             ? ""
             : `&category=${selectedCategory}`;
         const response = await fetch(
-          `${api_url}/products?page=${currentPage}&limit=${itemsPerPage}${categoryParam}`
+          `${api_url}/products?page=${currentPage}&limit=${itemsPerPage}${categoryParam}`,
         );
         const result = await response.json();
         if (result.success && result.data) {
@@ -70,7 +77,7 @@ const FeaturedProducts = () => {
                   : "bg-white text-gray-700 hover:bg-purple-50 border border-gray-200"
               }`}
             >
-              {category}
+              {category === "All Products" ? "Summer Collection" : category}
             </button>
           ))}
         </div>
