@@ -4,7 +4,6 @@ import { api_url } from "../../utils/ApiClient";
 import Pagination from "./Pagination";
 
 const FeaturedProducts = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All Products");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,25 +11,12 @@ const FeaturedProducts = () => {
 
   const itemsPerPage = 8;
 
-  const categories = [
-    "All Products",
-    "Hoodie",
-    "Pants",
-    "Suit",
-    "Crewneck",
-    "T-Shirt",
-  ];
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const categoryParam =
-          selectedCategory === "All Products"
-            ? ""
-            : `&category=${selectedCategory}`;
         const response = await fetch(
-          `${api_url}/products?page=${currentPage}&limit=${itemsPerPage}${categoryParam}`,
+          `${api_url}/products?page=${currentPage}&limit=${itemsPerPage}`,
         );
         const result = await response.json();
         if (result.success && result.data) {
@@ -45,7 +31,7 @@ const FeaturedProducts = () => {
     };
 
     fetchProducts();
-  }, [currentPage, selectedCategory]);
+  }, [currentPage]);
 
   const filteredProducts = products;
 
@@ -62,24 +48,11 @@ const FeaturedProducts = () => {
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex justify-center gap-4 mb-12 flex-wrap">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => {
-                setSelectedCategory(category);
-                setCurrentPage(1);
-              }}
-              className={`px-16 py-3 rounded-full font-medium transition-all duration-300 ${
-                selectedCategory === category
-                  ? "bg-purple-600 text-white shadow-lg"
-                  : "bg-white text-gray-700 hover:bg-purple-50 border border-gray-200"
-              }`}
-            >
-              {category === "All Products" ? "Summer Collection" : category}
-            </button>
-          ))}
+        {/* Collection Label */}
+        <div className="flex justify-center mb-12">
+          <span className="px-16 py-3 rounded-full font-medium bg-purple-600 text-white shadow-lg">
+            Summer Collection
+          </span>
         </div>
 
         {/* Products Grid */}
